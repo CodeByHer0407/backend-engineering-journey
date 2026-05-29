@@ -1,37 +1,45 @@
-# 📊 Learning Progress — Backend Engineering Journey
+# 📅 Progress Log
+
+Weekly learning log — consistency over perfection.
 
 ---
 
-## 🔄 In Progress
+## Week 1 — May 2026
 
-- [ ] **Docker** — containers, images, volumes, networking, compose
+### ✅ Completed
+- Flask fundamentals (routing, templates, request handling)
+- FastAPI intro — understood difference between Flask vs FastAPI
+- FastAPI setup and installation
 
----
+### 🔄 In Progress
+- Section 5: Books API project (GET, POST, Path/Query params)
 
-## 📋 Planned
+### 💡 Key Insight This Week
+> FastAPI's auto-generated `/docs` page (Swagger UI) means every API I build
+> is instantly testable and presentable — great for demos in interviews.
 
-- [ ] REST APIs & FastAPI
-- [ ] Databases — SQL, indexing, transactions
-- [ ] System Design fundamentals
-- [ ] Networking — HTTP, TCP/IP, DNS
-- [ ] Auth — JWT, OAuth2
-- [ ] Message Queues — Kafka basics
-- [ ] Deployment — CI/CD, Docker in prod
-
----
-
-## ✅ Completed
-
-*(nothing yet — just getting started)*
+### ⏱️ Hours Logged
+- Weekdays: ~8 hrs total
+- Weekend: ~4 hrs
+- **Total: ~12 hrs**
 
 ---
 
-## 🗓️ Monthly Log
+## Week 2 — (Upcoming)
 
-### March 2026
-- Repo created
-- Started Docker module — `docker-basics.md`
+### 🎯 Plan
+- [ ] Complete Section 5 — Books API (all 18 lessons)
+- [ ] Push `books_project/` as clean `.py` files to GitHub
+- [ ] Start Section 6
 
 ---
 
-*Last updated: March 2026*
+*Template for each week:*
+```
+## Week N — Month Year
+
+### ✅ Completed
+### 🔄 In Progress  
+### 💡 Key Insight This Week
+### ⏱️ Hours Logged
+```
