@@ -1,0 +1,22 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Virtual environments & secrets ---
+venv/
+.env
+
+# --- Databases ---
+*.db
+
+# --- Jupyter Notebook checkpoints ---
+.ipynb_checkpoints/
+
+# --- OS-specific junk ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
