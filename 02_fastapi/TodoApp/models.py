@@ -24,7 +24,8 @@ class Users(Base):
     last_name = Column(String)
     hashed_password = Column(String)                     # Stored as a bcrypt hash, never plain text
     is_active = Column(Boolean, default=True)            # Soft-disable a user without deleting them
-    role = Column(String)                                # e.g. "admin" or "user" — controls permissions
+    role = Column(String)                           # e.g. "admin" or "user" — controls permissions
+    phone_number = Column(String(10))
 
 
 class Todos(Base):

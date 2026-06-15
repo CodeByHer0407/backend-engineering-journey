@@ -11,7 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # SQLite database file stored in the project root directory.
 # The "sqlite:///./" prefix means "relative to the current working directory".
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:1999@127.0.0.1:3306/todoapplicationdatabase"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./todosapp.db"
 
 
 '''
