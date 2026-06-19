@@ -42,5 +42,5 @@ async def delete_todo(user: user_dependency, db: db_dependency, todo_id: int = P
     if todo_model is None:
         raise HTTPException(status_code=404, detail="Todo not found")
     ## WHY HAVE WE DONE THIS HERE AGAIN? WE COULD DIRECTLY DELETE todo_model if anything found
-    db.query(Todos).filter(Todos.id == todo_id).delete()
+    db.delete(todo_model)
     db.commit()

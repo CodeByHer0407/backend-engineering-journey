@@ -18,6 +18,7 @@ def get_db():
         db.close()
 
 
+# FastAPI says: why don't you tell me once how to get a database session, and I will provide it whenever you need it?
 db_dependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 
@@ -74,11 +75,11 @@ async def update_todo(user: user_dependency, db: db_dependency, todo_request: To
 
 
 @router.delete("/todo/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_todo(user: user_dependency, db: db_dependency, todo_request: TodoRequest, todo_id: int = Path(gt=0)):
+async def delete_todo(user: user_dependency, db: db_dependency, todo_id: int = Path(gt=0)):
     if user is None:
         raise HTTPException(status_code=401, detail="Authentication failed.")
     todo_model = db.query(Todos).filter(Todos.id == todo_id).filter(Todos.owner == user.get("id")).first()
     if todo_model is None:
         raise HTTPException(status_code=404, detail="Todo not found. Try with a different input!")
-    db.query(Todos).filter(Todos.id == todo_id).filter(Todos.owner == user.get("id")).delete()
+    db.delete(todo_model)
     db.commit()

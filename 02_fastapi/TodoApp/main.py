@@ -20,6 +20,11 @@ app = FastAPI()
 # 'bind=engine' tells SQLAlchemy which database connection to use.
 models.Base.metadata.create_all(bind=engine)
 
+
+@app.get("/healthy")
+def health_checkup():
+    return {'status': 'Healthy'}
+
 # Register routers — each handles a logical group of API endpoints:
 #   auth  → /auth/...   (login, register, JWT token generation)
 #   todos → /todos/...  (CRUD operations for todo items)
