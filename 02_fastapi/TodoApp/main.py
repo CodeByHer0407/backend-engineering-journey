@@ -6,10 +6,12 @@
 # =============================================================================
 
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
 import models
 from database import engine
 from routers import auth, todos, admin, users
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 
 # Create the FastAPI application instance.
 app = FastAPI()
@@ -19,6 +21,14 @@ app = FastAPI()
 # This is safe to run every time — SQLAlchemy skips tables that already exist.
 # 'bind=engine' tells SQLAlchemy which database connection to use.
 models.Base.metadata.create_all(bind=engine)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def test(request: Request):
+    return RedirectResponse(url="/todos/todo-page", status_code=status.HTTP_302_FOUND)
+
+
 
 
 @app.get("/healthy")
