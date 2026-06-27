@@ -1,6 +1,6 @@
 from routers.users import get_db, get_current_user
 from fastapi import status 
-from test.utils import *
+from tests.utils import *
 import pytest
 
 

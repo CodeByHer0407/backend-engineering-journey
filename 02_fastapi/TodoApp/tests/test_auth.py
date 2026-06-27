@@ -1,5 +1,5 @@
 from routers.auth import get_db, authenticate_user, create_access_token, SECRET_KEY, ALGORITHM, get_current_user
-from test.utils import *
+from tests.utils import *
 from fastapi import status, HTTPException
 from jose import jwt 
 from datetime import timedelta

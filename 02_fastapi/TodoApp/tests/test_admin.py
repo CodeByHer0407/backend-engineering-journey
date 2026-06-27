@@ -1,4 +1,4 @@
-from test.utils import * 
+from tests.utils import * 
 from routers.admin import get_db, get_current_user 
 import pytest 
 from fastapi import status

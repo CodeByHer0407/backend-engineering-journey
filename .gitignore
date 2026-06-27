@@ -1,20 +1,33 @@
-# --- Python ---
+# -----------------------------
+# Python
+# -----------------------------
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*.so
+.pytest_cache/
 
-# --- Virtual environments & secrets ---
+# Virtual environments
 venv/
+venv1/
+.venv/
+env/
+
+# Environment variables
 .env
 
+# Databases
+*.db
 
-# --- Jupyter Notebook checkpoints ---
-.ipynb_checkpoints/
+# IDE
+.vscode/
+.idea/
 
-# --- OS-specific junk ---
+# OS
 .DS_Store
 Thumbs.db
 
-# --- Logs ---
+# Logs
 *.log
+
+# Jupyter
+.ipynb_checkpoints/
