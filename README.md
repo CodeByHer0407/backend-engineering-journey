@@ -1,35 +1,204 @@
 # 🚀 Backend Engineering Journey
 
+A curated repository documenting my journey toward becoming an **AI Backend Engineer**.
 
-## 🎯 Goal
-Land a role as an **AI Backend Engineer** by **Jan–Apr 2027**  
-
----
-
-## 🗺️ Learning Roadmap
-
-| Phase | Topics | Status |
-|-------|--------|--------|
-| **Phase 1** | Flask, FastAPI | 🔄 In Progress |
-| **Phase 2** | Docker, Databases, REST API Design | ⏳ Up Next |
-| **Phase 3** | LLM APIs, LangChain, RAG Pipelines | ⏳ Planned |
-| **Phase 4** | MLOps, Docker + Cloud Deployment | ⏳ Planned |
-| **Phase 5** | Capstone — Industrial AI Project | ⏳ Planned |
+This repository contains projects, learning notes, backend best practices, deployment exercises, and production-ready applications built while learning modern backend development.
 
 ---
 
-## 📁 Repo Structure
+# 🎯 Goal
 
-```
-backend-engineering-journey/
+* Become an **AI Backend Engineer**
+* Target switch: **Jan – Apr 2027**
+* Build production-quality backend projects
+* Learn software engineering best practices, system design, cloud deployment, and AI backend development
+
+---
+
+# 🛠 Tech Stack
+
+### Languages
+
+* Python
+
+### Backend
+
+* FastAPI
+* Flask
+* SQLAlchemy
+* Alembic
+* Jinja2
+* JWT Authentication
+
+### Databases
+
+* SQLite
+* PostgreSQL
+
+### Testing
+
+* Pytest
+
+### Deployment
+
+* Render
+
+### Tools
+
+* Git
+* GitHub
+* VS Code
+
+---
+
+# 📁 Repository Structure
+
+```text
+backend-engineering-journey
 │
-├── 01_flask/               # Flask fundamentals + mini project
-├── 02_fastapi/             # FastAPI complete course + Books API project
-├── docker/                 # Docker fundamentals
-└── progress.md             # Weekly learning log
+├── 01_flask/
+│
+├── 02_fastapi/
+│   ├── books_project/
+│   └── TodoApp/
+│
+├── docker/
+│
+├── learning_notes/
+│
+├── progress.md
+│
+└── README.md
 ```
 
 ---
+
+# 📌 Featured Projects
+
+| Project                | Status      | Tech Stack                                           |
+| ---------------------- | ----------- | ---------------------------------------------------- |
+| ✅ Todo Application     | Deployed    | FastAPI, SQLAlchemy, PostgreSQL, JWT, Jinja2, Render |
+| 📚 Books REST API      | In Progress | FastAPI                                              |
+| 🤖 AI Backend Projects | Planned     | FastAPI, LangChain, Docker                           |
+
+---
+
+# 🚀 Todo Application
+
+A complete authentication-based Todo application built using FastAPI.
+
+### Features
+
+* User Registration
+* Login / Logout
+* JWT Authentication
+* Protected Routes
+* CRUD Operations
+* SQLAlchemy ORM
+* Alembic Database Migrations
+* HTML Templates (Jinja2)
+* Bootstrap UI
+* PostgreSQL
+* Render Deployment
+
+---
+
+# 📖 Learning Roadmap
+
+## ✅ Phase 1
+
+* Flask
+* FastAPI
+* Authentication
+* SQLAlchemy
+* Alembic
+* Testing
+* Deployment
+
+## 🔄 Phase 2
+
+* Docker
+* Docker Compose
+* PostgreSQL (Advanced)
+* Redis
+* REST API Best Practices
+
+## ⏳ Phase 3
+
+* Async FastAPI
+* Celery
+* RabbitMQ
+* Background Tasks
+* Caching
+
+## ⏳ Phase 4
+
+* LLM APIs
+* LangChain
+* Vector Databases
+* RAG Pipelines
+
+## ⏳ Phase 5
+
+* AWS
+* Kubernetes
+* CI/CD
+* System Design
+* MLOps
+
+---
+
+# 📚 Learning Notes
+
+The `learning_notes` folder contains notebooks and reference material created while learning backend engineering concepts.
+
+Topics include:
+
+* FastAPI
+* SQLAlchemy
+* Alembic
+* JWT
+* Database Design
+* SQL
+* Docker
+
+---
+
+# 📈 Progress Tracker
+
+Weekly learning updates are maintained in:
+
+```text
+progress.md
+```
+
+---
+
+# 🎯 Current Focus
+
+* Refactoring FastAPI Todo Application
+* Improving project architecture
+* Production-ready code quality
+* GitHub portfolio improvements
+
+---
+
+# 📌 Long-Term Goal
+
+Build a portfolio of production-ready backend applications demonstrating:
+
+* Clean Architecture
+* Authentication
+* Databases
+* Testing
+* Docker
+* Cloud Deployment
+* AI Backend Systems
+
+---
+
+⭐ If you find this repository helpful, feel free to explore the projects and follow my backend engineering journey.
+```
 
 ## 🛠️ Tech Stack (Growing)
 

@@ -1,257 +1,352 @@
-# 🚀 TodoApp - FastAPI Backend Application
+# ✅ Todo Application
 
-## Overview
+A full-stack Todo Management application built with **FastAPI**, featuring JWT authentication, role-based authorization, database migrations, unit testing, and cloud deployment.
 
-TodoApp is a backend REST API built using FastAPI, SQLAlchemy ORM, SQLite, and JWT Authentication.
-
-The project demonstrates:
-
-- User Registration
-- User Authentication
-- JWT Token Authorization
-- CRUD Operations
-- Role-Based Access Control (RBAC)
-- Database Integration using SQLAlchemy ORM
-
-This project is being built as part of my FastAPI learning journey while strengthening my backend engineering skills.
+This project was initially developed while learning FastAPI and has since been refactored using production-oriented backend engineering practices.
 
 ---
 
-## Tech Stack
+# 🚀 Live Demo
 
-| Technology | Purpose |
-|------------|---------|
-| FastAPI | API Framework |
-| SQLAlchemy | ORM |
-| SQLite | Database |
-| Pydantic | Request Validation |
-| JWT | Authentication |
-| Passlib (bcrypt) | Password Hashing |
-| Uvicorn | ASGI Server |
+**Application:** *https://todoapp-deployment-aam4.onrender.com*
+
+
 
 ---
 
-## Project Architecture
+# ✨ Features
+
+## Authentication
+
+* User Registration
+* Secure Login
+* Logout
+* JWT Authentication
+* OAuth2 Password Flow
+* Password Hashing using bcrypt
+
+---
+
+## Todo Management
+
+* Create Todo
+* View Todos
+* Update Todo
+* Delete Todo
+* User-specific Todo Ownership
+* Task Completion Status
+* Priority Levels
+
+---
+
+## User Management
+
+* View Profile
+* Update Password
+* Update Phone Number
+
+---
+
+## Admin Features
+
+* View All Todos
+* Delete Any Todo
+* Role-Based Authorization
+
+---
+
+# 🛠 Technology Stack
+
+| Category            | Technologies       |
+| ------------------- | ------------------ |
+| Backend             | FastAPI            |
+| Database            | PostgreSQL, SQLite |
+| ORM                 | SQLAlchemy         |
+| Database Migrations | Alembic            |
+| Authentication      | JWT, OAuth2        |
+| Validation          | Pydantic           |
+| Password Security   | Passlib (bcrypt)   |
+| Frontend            | Jinja2, Bootstrap  |
+| Testing             | Pytest             |
+| Deployment          | Render             |
+
+---
+
+# 📁 Project Structure
 
 ```text
-Client
-  │
-  ▼
-FastAPI Routers
-  │
-  ├── auth.py
-  ├── todos.py
-  ├── users.py
-  └── admin.py
-  │
-  ▼
-SQLAlchemy ORM
-  │
-  ▼
-SQLite Database
+TodoApp/
+│
+├── alembic/
+├── routers/
+│   ├── auth.py
+│   ├── todos.py
+│   ├── users.py
+│   └── admin.py
+│
+├── static/
+│
+├── templates/
+│
+├── tests/
+│
+├── database.py
+├── models.py
+├── main.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## Authentication Flow
-
-### User Registration
+# 🏗 Architecture
 
 ```text
-User Registration Request
-          ↓
-CreateUserRequest Validation
-          ↓
-Password Hashing (bcrypt)
-          ↓
-User Saved in Database
+                Browser
+                   │
+                   ▼
+         Jinja2 Templates
+                   │
+                   ▼
+              FastAPI App
+                   │
+    ┌──────────────┼──────────────┐
+    ▼              ▼              ▼
+ Authentication   Todos        Admin
+                   │
+                   ▼
+           SQLAlchemy ORM
+                   │
+                   ▼
+            PostgreSQL / SQLite
 ```
 
-### User Login
+---
+
+# 🔐 Authentication Flow
 
 ```text
-Username + Password
-          ↓
+User Login
+     │
+     ▼
 Credential Verification
-          ↓
-JWT Token Generation
-          ↓
-Token Returned to User
+     │
+     ▼
+JWT Token Generated
+     │
+     ▼
+Token Stored in Browser Cookie
+     │
+     ▼
+Protected Requests
+     │
+     ▼
+Current User Retrieved
+     │
+     ▼
+Authorized Endpoint Access
 ```
 
-### Authorized Requests
+---
+
+# 🗄 Database Schema
+
+## Users
+
+| Field           | Description        |
+| --------------- | ------------------ |
+| id              | Primary Key        |
+| username        | Unique Username    |
+| email           | User Email         |
+| hashed_password | Encrypted Password |
+| role            | User / Admin       |
+| phone_number    | Contact Number     |
+| is_active       | Active Status      |
+
+---
+
+## Todos
+
+| Field       | Description            |
+| ----------- | ---------------------- |
+| id          | Primary Key            |
+| title       | Todo Title             |
+| description | Todo Description       |
+| priority    | Task Priority          |
+| complete    | Completion Status      |
+| owner       | Foreign Key → Users.id |
+
+---
+
+# 📌 API Modules
+
+## `auth.py`
+
+Responsible for:
+
+* User Registration
+* Login
+* JWT Generation
+* Password Hashing
+* Current User Authentication
+
+---
+
+## `todos.py`
+
+Responsible for:
+
+* Create Todo
+* Read Todo
+* Update Todo
+* Delete Todo
+
+Each authenticated user can only manage their own todos.
+
+---
+
+## `users.py`
+
+Responsible for:
+
+* View User Information
+* Change Password
+* Update Phone Number
+
+---
+
+## `admin.py`
+
+Responsible for:
+
+* View All Todos
+* Delete Any Todo
+
+Accessible only to Admin users.
+
+---
+
+# 🧪 Testing
+
+The application includes unit tests using **Pytest**.
+
+Coverage includes:
+
+* Authentication
+* Todo APIs
+* User APIs
+* Admin APIs
+* Database Dependency Overrides
+
+---
+
+# 🗃 Database Migrations
+
+Database schema changes are managed using **Alembic**.
+
+Current migration includes:
+
+* User phone number column
+* Schema versioning
+* Upgrade and downgrade support
+
+---
+
+# 🌐 Deployment
+
+The application is deployed using:
+
+* Render Web Service
+* Render PostgreSQL Database
+
+Deployment configuration includes:
+
+* Environment Variables
+* PostgreSQL Connection
+* Production FastAPI Server
+
+---
+
+# 🚀 Local Development
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Navigate to the project:
+
+```bash
+cd 02_fastapi/TodoApp
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+uvicorn main:app --reload
+```
+
+Open:
 
 ```text
-Client Request
-       ↓
-JWT Token
-       ↓
-get_current_user()
-       ↓
-User Identified
-       ↓
-Protected Endpoint Access
+http://127.0.0.1:8000
+```
+
+API Documentation:
+
+```text
+http://127.0.0.1:8000/docs
 ```
 
 ---
 
-## Database Schema
+# 📚 Learning Outcomes
 
-### Users Table
+Through this project, I gained hands-on experience with:
 
-| Column | Description |
-|----------|------------|
-| id | Primary Key |
-| username | Unique Username |
-| email | User Email |
-| hashed_password | Secure Password Hash |
-| role | User/Admin |
-| phone_number | Contact Number |
-
-### Todos Table
-
-| Column | Description |
-|----------|------------|
-| id | Primary Key |
-| title | Todo Title |
-| description | Todo Description |
-| priority | Task Priority |
-| complete | Completion Status |
-| owner | Foreign Key → Users.id |
+* FastAPI
+* REST API Design
+* SQLAlchemy ORM
+* Alembic
+* JWT Authentication
+* OAuth2
+* Dependency Injection
+* Database Relationships
+* PostgreSQL
+* Pytest
+* Cloud Deployment
+* Backend Project Organization
 
 ---
 
-## API Modules
+# 🔮 Future Enhancements
 
-### auth.py
+Planned improvements include:
 
-Responsible for:
-
-- User Registration
-- Login
-- Password Hashing
-- JWT Token Generation
-- Current User Identification
-
-### todos.py
-
-Responsible for:
-
-- Create Todo
-- Read Todo
-- Update Todo
-- Delete Todo
-
-Users can only access their own todos.
-
-### users.py
-
-Responsible for:
-
-- View User Profile
-- Change Password
-- Update Phone Number
-
-### admin.py
-
-Responsible for:
-
-- View All Todos
-- Delete Any Todo
-
-Accessible only to users with Admin role.
+* Refresh Tokens
+* Email Verification
+* Password Reset
+* Docker Support
+* GitHub Actions CI/CD
+* API Rate Limiting
+* Structured Logging
+* User Profile Images
+* Responsive UI Redesign
+* Dark Mode
 
 ---
 
-## Current Features
-
-- JWT Authentication
-- Password Hashing
-- CRUD Operations
-- SQLAlchemy ORM
-- Role-Based Authorization
-- Dependency Injection
-- Request Validation using Pydantic
-- Foreign Key Relationships
-
----
-
-## Testing (Upcoming Section)
-
-Planned additions after completing the testing module:
-
-- Unit Testing
-- Integration Testing
-- Pytest Fixtures
-- Dependency Overrides
-- Test Database Isolation
-- Coverage Reporting
-
----
-
-## Database Migrations (Upcoming Section)
-
-Planned additions after completing Alembic:
-
-- Schema Versioning
-- Migration Scripts
-- Upgrade/Downgrade Support
-- Production-safe Database Changes
-
----
-
-## Full Stack Integration (Upcoming Section)
-
-Planned additions:
-
-- Frontend Integration
-- API Consumption
-- End-to-End Flow Documentation
-- Screenshots and Architecture Diagrams
-
----
-
-## Deployment (Upcoming Section)
-
-Planned additions:
-
-- Docker
-- Cloud Deployment
-- CI/CD Pipeline
-- Environment Configuration
-
----
-
-## Learning Outcomes
-
-While building this project, I learned:
-
-- FastAPI Routing
-- Dependency Injection
-- JWT Authentication
-- Password Hashing
-- SQLAlchemy ORM
-- CRUD API Design
-- Database Relationships
-- Role-Based Access Control
-
----
-
-## Future Improvements
-
-- Refresh Tokens
-- PostgreSQL Integration
-- Dockerization
-- CI/CD Pipeline
-- API Rate Limiting
-- Enhanced Logging & Monitoring
-
----
-
-## Author
+# 👩‍💻 Author
 
 **Saloni Azad**
 
 Backend Engineer | Python | FastAPI | SQLAlchemy
 
-Currently learning backend system design and scalable API development.
+Currently focused on building production-ready backend systems while preparing for Backend and AI Backend Engineering roles.
