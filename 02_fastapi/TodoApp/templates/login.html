@@ -1,25 +1,139 @@
-{% include 'layout.html' %}
+{% extends "layout.html" %}
 
-<div class="container">
-    <div class="card-header">
-        Login
-    </div>
-    <div class="card-body">
-        <form id="loginForm">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" name="username" autocomplete="username" required>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password" autocomplete="current-password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-    </div>
-    <div>
-        <div class="card-footer text-muted">
-            <a href="/auth/register-page"> Register? </a>
+{% block title %}
+Login | TodoFlow
+{% endblock %}
+
+{% block content %}
+
+<section class="login-page">
+
+    <div class="login-left">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+
+                <i class="bi bi-stars"></i>
+
+                Productivity Simplified
+
+            </span>
+
+            <h1>
+
+                Welcome to
+
+                <span>TodoFlow</span>
+
+            </h1>
+
+            <p>
+
+                Organize your tasks, stay focused,
+                and achieve more every day.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Track all your work
+                </li>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Prioritize what matters
+                </li>
+
+                <li>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Stay productive
+                </li>
+
+            </ul>
+
         </div>
+
     </div>
-</div>
+
+    <div class="login-right">
+
+        <div class="login-card">
+
+            <h2>
+
+                Welcome Back 👋
+
+            </h2>
+
+            <p>
+
+                Sign in to continue
+
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Username
+
+                    </label>
+
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="username"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="password"
+                        required>
+
+                </div>
+
+                <button
+                    class="btn login-submit"
+                    type="submit">
+
+                    Sign In
+
+                </button>
+
+            </form>
+
+            <div class="register-link">
+
+                Don't have an account?
+
+                <a href="/auth/register-page">
+
+                    Create one
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

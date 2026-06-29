@@ -1,25 +1,101 @@
-<div>
-    <nav class="navbar navbar-expand-md navbar-dark main-color fixed-top">
-        <a class="navbar-brand" href="#">Todo App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-light todoflow-navbar fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand brand-logo" href="/todos/todo-page">
+
+            <i class="bi bi-check2-square"></i>
+
+            <span>TodoFlow</span>
+
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                {% if user %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="/todos/todo-page">Home</a>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+            {% if user %}
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="/todos/todo-page">
+
+                        <i class="bi bi-grid"></i>
+
+                        Dashboard
+
+                    </a>
+
                 </li>
-                {% endif %}
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                {% if user %}
-                <li class="nav-item m-1">
-                    <a type="button" class="btn btn-outline-light" onclick="logout()">Logout</a>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="/todos/add-todo-page">
+
+                        <i class="bi bi-plus-circle"></i>
+
+                        Add Task
+
+                    </a>
+
                 </li>
-                {% endif %}
+
             </ul>
+
+            <div class="navbar-user">
+
+                <span class="welcome-text">
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <strong>{{ user.first_name if user.first_name else user.username }}</strong>
+
+                </span>
+
+                <button
+                    class="btn logout-btn"
+                    onclick="logout()">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+            {% else %}
+
+            <div class="ml-auto">
+
+                <a
+                    class="btn login-btn"
+                    href="/auth/login-page">
+
+                    Login
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
         </div>
-    </nav>
-</div>
+
+    </div>
+
+</nav>

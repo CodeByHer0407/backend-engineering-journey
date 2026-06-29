@@ -26,15 +26,35 @@
                 });
 
                 if (response.ok) {
-                    form.reset(); // Clear the form
-                } else {
+
+    showToast(
+        "Task Created",
+        "Your new task has been added."
+    );
+
+    form.reset();
+
+    setTimeout(() => {
+        window.location.href = "/todos/todo-page";
+    }, 800);
+
+}   else {
                     // Handle error
                     const errorData = await response.json();
-                    alert(`Error: ${errorData.detail}`);
+
+    showToast(
+    "Failed to Create Task",
+    errorData.detail,
+    "error"
+);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                showToast(
+    "Unexpected Error",
+    "Please try again.",
+    "error"
+);
             }
         });
     }
@@ -76,15 +96,30 @@
             });
 
             if (response.ok) {
-                window.location.href = '/todos/todo-page'; // Redirect to the todo page
+                showToast(
+    "Task Updated",
+    "Changes saved successfully."
+);
+
+setTimeout(() => {
+    window.location.href = "/todos/todo-page";
+}, 800);
             } else {
                 // Handle error
                 const errorData = await response.json();
-                alert(`Error: ${errorData.detail}`);
+                showToast(
+    "Update Failed",
+    errorData.detail,
+    "error"
+);
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('An error occurred. Please try again.');
+            showToast(
+    "Unexpected Error",
+    "Please try again.",
+    "error"
+);
         }
     });
 
@@ -107,15 +142,30 @@
 
                 if (response.ok) {
                     // Handle success
-                    window.location.href = '/todos/todo-page'; // Redirect to the todo page
+                    showToast(
+    "Task Deleted",
+    "The task has been removed."
+);
+
+setTimeout(() => {
+    window.location.href = "/todos/todo-page";
+}, 800); // Redirect to the todo page
                 } else {
                     // Handle error
                     const errorData = await response.json();
-                    alert(`Error: ${errorData.detail}`);
+                    showToast(
+    "Delete Failed",
+    errorData.detail,
+    "error"
+);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                showToast(
+    "Unexpected Error",
+    "Please try again.",
+    "error"
+);
             }
         });
 
@@ -155,11 +205,11 @@
                 } else {
                     // Handle error
                     const errorData = await response.json();
-                    alert(`Error: ${errorData.detail}`);
+                    showToast("Login Failed",errorData.detail,"error");
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                showToast("Unexpected Error","Please try again.","error");
             }
         });
     }
@@ -175,7 +225,7 @@
             const data = Object.fromEntries(formData.entries());
 
             if (data.password !== data.password2) {
-                alert("Passwords do not match");
+                showToast("Passwords Don't Match","Please enter the same password twice.","error");
                 return;
             }
             console.log("Form data:", data);
@@ -184,10 +234,9 @@
                 username: data.username,
                 first_name: data.first_name,
                 last_name: data.last_name,
-                role: data.role,
+                role: "user",
                 phone_number: data.phone_number,
                 password: data.password,
-                is_active: true
             };
             console.log("Payload:", payload);
 
@@ -201,15 +250,29 @@
                 });
 
                 if (response.ok) {
-                    window.location.href = '/auth/login-page';
-                } else {
+
+                    showToast(
+                        "Account Created",
+                        "Welcome to TodoFlow!"
+                    );
+
+                    setTimeout(() => {
+                        window.location.href = '/auth/login-page';
+                    }, 1200);
+
+} else {
                     // Handle error
                     const errorData = await response.json();
-                    alert(`Error: ${errorData.message}`);
+
+                    showToast(
+    "Registration Failed",
+    errorData.detail || "Unable to create account.",
+    "error"
+);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                showToast("Unexpected Error","Please try again.","error");
             }
         });
     }
@@ -250,3 +313,46 @@
         // Redirect to the login page
         window.location.href = '/auth/login-page';
     };
+
+function showToast(title, message, type="success"){
+
+    const container = document.getElementById("toast-container");
+
+    const toast = document.createElement("div");
+
+    toast.className=`custom-toast ${type}`;
+
+    toast.innerHTML=`
+
+        <div class="toast-icon">
+
+            ${type==="success" ? "✅" : "❌"}
+
+        </div>
+
+        <div>
+
+            <div class="toast-title">${title}</div>
+
+            <div class="toast-message">${message}</div>
+
+        </div>
+
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(()=>{
+
+        toast.classList.add("toast-hide");
+
+        setTimeout(()=>{
+
+            toast.remove();
+
+        },350);
+
+    },3000);
+
+}
+

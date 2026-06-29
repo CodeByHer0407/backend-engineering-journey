@@ -1,0 +1,165 @@
+/* ==============================
+   Dashboard Hero
+============================== */
+
+.hero-section{
+    background: linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    border-radius:24px;
+    padding:45px;
+    margin-bottom:35px;
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+}
+
+.hero-tag{
+    display:inline-block;
+    background:rgba(255,255,255,.18);
+    padding:8px 16px;
+    border-radius:50px;
+    font-size:.8rem;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+.hero-title{
+    font-size:2.4rem;
+    font-weight:700;
+    margin-top:18px;
+    margin-bottom:12px;
+}
+
+.hero-title span{
+    color:#fde68a;
+}
+
+.hero-subtitle{
+    font-size:1.05rem;
+    opacity:.9;
+    max-width:500px;
+    margin-bottom:0;
+}
+
+.new-task-btn{
+    border-radius:14px;
+    padding:14px 28px;
+    font-weight:600;
+    font-size:1rem;
+}
+
+.new-task-btn i{
+    margin-right:8px;
+}
+
+/* ==============================
+   Statistics Cards
+============================== */
+
+.stats-card{
+    border:none;
+    border-radius:20px;
+    transition:.25s;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.stats-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.stats-card .card-body{
+    padding:28px;
+}
+
+.stats-card h6{
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+.stats-card h2{
+    font-size:2.4rem;
+    font-weight:700;
+    margin:0;
+}
+
+/* ==============================
+   Todo Cards
+============================== */
+
+.todo-card{
+    border:none;
+    border-radius:18px;
+    transition:.25s;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.todo-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.todo-card .card-body{
+    padding:28px;
+}
+
+.todo-card h4{
+    font-weight:700;
+}
+
+.completed-title{
+    text-decoration:line-through;
+    color:#9ca3af;
+}
+
+/* ==============================
+   Priority Badges
+============================== */
+
+.badge{
+    padding:8px 14px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:.8rem;
+}
+
+/* ==============================
+   Buttons
+============================== */
+
+.btn-outline-primary{
+    border-radius:12px;
+    font-weight:600;
+    padding:10px 18px;
+}
+
+.btn-outline-primary:hover{
+    transform:translateY(-2px);
+}
+
+/* ==============================
+   Responsive
+============================== */
+
+@media(max-width:768px){
+
+.hero-section{
+    padding:30px;
+}
+
+.hero-title{
+    font-size:1.8rem;
+}
+
+.stats-card{
+    margin-bottom:18px;
+}
+
+.todo-card .d-flex{
+    flex-direction:column;
+}
+
+.todo-card .btn{
+    margin-top:20px;
+    width:100%;
+}
+
+}

@@ -1,26 +1,74 @@
+/* -----------------------------------
+   Global Helper Classes
+----------------------------------- */
 
-body {
-  background: #fafafa;
-  color: #33333a;
-  padding-top: 70px;
+.text-primary {
+    color: var(--primary) !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #323232;
+.bg-primary {
+    background: var(--primary) !important;
 }
 
-.main-color {
-  background-color: #0e76a8 ;
+.shadow-card {
+    box-shadow: var(--shadow-md);
+}
+
+.rounded-xl {
+    border-radius: var(--radius-lg);
 }
 
 .strike-through-td {
     text-decoration: line-through;
 }
 
-/* h1 {
-  color: red;
-} */
+.cursor-pointer {
+    cursor: pointer;
+}
 
 
+/* ============================= */
+/* Dashboard */
+/* ============================= */
 
+.stats-card{
+    border-radius:16px;
+    transition:.25s;
+}
 
+.stats-card:hover{
+    transform:translateY(-4px);
+}
+
+.todo-card{
+    border-radius:18px;
+    transition:.25s;
+}
+
+.todo-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 28px rgba(0,0,0,.08)!important;
+}
+
+.completed-title{
+    text-decoration:line-through;
+    color:#999;
+}
+
+.badge{
+    font-size:.85rem;
+    padding:8px 14px;
+    border-radius:20px;
+}
+
+.btn-outline-primary{
+    border-radius:10px;
+}
+
+.btn-primary{
+    border-radius:12px;
+}
+
+.card{
+    overflow:hidden;
+}

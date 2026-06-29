@@ -24,7 +24,10 @@ def test_admin_read_all_authenticated(test_todo):
 
 def test_delete_todo(test_todo):
     response = client.delete("/admin/todo/1")
-    assert response.status_code == 204
+    assert response.status_code == status.HTTP_200_OK
+    assert response.json() == {
+        "message": "Todo deleted successfully."
+    }
     db = TestingSessionLocal()
     model = db.query(Todos).filter(Todos.id == 1).first()
     assert model is None 

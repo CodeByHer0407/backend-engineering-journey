@@ -1,25 +1,35 @@
+# =============================================================================
 # database.py
-# Centralized database configuration for the application.
+#
+# Configures the SQLAlchemy engine, session factory, and declarative base.
+# Loads the database URL from environment variables.
+# =============================================================================
 
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgresql://todoapp_db_r8j5_user:L4SPYjK52pJyNEur4SFZhwAwlSIlM3P3@dpg-d8vcco0g4nts738q1nk0-a.singapore-postgres.render.com/todoapp_db_r8j5"
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+load_dotenv()
 
-# SQLite database file
-#SQLALCHEMY_DATABASE_URL = "sqlite:///./todosapp.db"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Engine: responsible for connecting SQLAlchemy to the database
-#engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set.")
 
-# Session factory: creates a new database session for each request
-sessionLocal = sessionmaker(
+if DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False},
+    )
+else:
+    engine = create_engine(DATABASE_URL)
+
+SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
 )
 
-# Base class for all ORM models (Users, Todos, etc.)
 Base = declarative_base()

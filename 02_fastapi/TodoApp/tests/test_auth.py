@@ -15,9 +15,9 @@ def test_authenticate_user(test_user):
     assert authenticated_user.username == test_user.username 
 
     non_existent_user = authenticate_user('WronguserName', 'testpasswd', db)
-    assert non_existent_user is False
+    assert non_existent_user is None
     wrong_password_user = authenticate_user(test_user.username, 'wrong123', db)
-    assert wrong_password_user is False
+    assert wrong_password_user is None
 
 
 def test_create_access_token():
@@ -52,4 +52,4 @@ async def test_get_current_user_missing_payload():
         await get_current_user(token=token)
 
     assert excinfo.value.status_code == 401
-    assert excinfo.value.detail == 'Could not validate the user.'
+    assert excinfo.value.detail == 'Could not validate credentials.'

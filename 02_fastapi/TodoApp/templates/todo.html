@@ -1,63 +1,216 @@
-{% include 'layout.html' %}
+{% extends "layout.html" %}
 
-<div class="container">
-    <div class="card text-center">
-        <div class="card-header">
-            Your Todo's!
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">
-                List of your todo's!
-            </h5>
-            <p class="card-text">
-                Information regarding stuff that needs to be complete
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Header -->
+
+    <div class="hero-section mb-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-8">
+
+            <span class="hero-tag">
+                Productivity Dashboard
+            </span>
+
+            <h1 class="hero-title mt-3">
+                👋 Welcome back,
+                <span>{{ user.username }}</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Stay organized, finish more tasks, and keep your day under control.
             </p>
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Info</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {% for todo in todos %}
-                        {% if todo.complete == False %}
-                            <tr class="pointer">
-                                <td>{{ loop.index }}</td>
-                                <td>{{ todo.title }}</td>
-                                <td>
-                                    <button
-                                        type="button"
-                                        class="btn btn-info"
-                                        onclick="window.location.href='/todos/edit-todo-page/{{ todo.id }}'">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr class="pointer alert alert-success">
-                                <td>{{ loop.index }}</td>
-                                <td class="strike-through-td">{{ todo.title }}</td>
-                                <td>
-                                    <button
-                                        type="button"
-                                        class="btn btn-info"
-                                        onclick="window.location.href='/todos/edit-todo-page/{{ todo.id }}'">
-                                        Edit
-                                    </button>
-                                </td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            <a href="/todos/add-todo-page" class="btn btn-primary">
-                Add a new todo!
-            </a>
         </div>
+
+        <div class="col-lg-4 text-lg-right mt-4 mt-lg-0">
+
+            <a href="/todos/add-todo-page"
+               class="btn btn-primary btn-lg new-task-btn">
+
+                <i class="bi bi-plus-circle-fill"></i>
+
+                Create New Task
+
+            </a>
+
+        </div>
+
     </div>
+
 </div>
+
+
+    <!-- Stats -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 stats-card">
+                <div class="card-body">
+                    <h6 class="text-muted">
+                        <i class="bi bi-list-task"></i> Total Tasks
+                    </h6>
+
+                    <h2>
+                        {{ todos|length }}
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 stats-card">
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        <i class="bi bi-check-circle-fill text-success">Completed</i>
+                    </h6>
+
+                    <h2>
+                        {{ todos | selectattr('complete') | list | length }}
+                    </h2>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0 stats-card">
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        <i class="bi bi-clock-history text-warning">Pending</i>
+                    </h6>
+
+                    <h2>
+                        {{ todos | rejectattr('complete') | list | length }}
+                    </h2>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Todo Cards -->
+
+    {% for todo in todos %}
+
+    <div class="card shadow-sm border-0 mb-3 todo-card">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-start">
+
+                <div>
+
+                    {% if todo.complete %}
+
+                        <h4 class="completed-title">
+                            ✓ {{ todo.title }}
+                        </h4>
+
+                    {% else %}
+
+                        <h4>
+                            {{ todo.title }}
+                        </h4>
+
+                    {% endif %}
+
+                    <p class="text-muted mb-3">
+                        {{ todo.description }}
+                    </p>
+
+
+                    {% if todo.priority == 5 %}
+
+                        <span class="badge badge-danger">
+                            <i class="bi bi-exclamation-circle-fill"></i>
+                            High Priority
+                        </span>
+
+                    {% elif todo.priority == 4 %}
+
+                        <span class="badge badge-warning">
+                            <i class="bi bi-dash-circle-fill"></i>
+                                Medium Priority
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge badge-secondary">
+                            <i class="bi bi-arrow-down-circle-fill"></i>
+                                Low Priority
+                        </span>
+
+                    {% endif %}
+
+
+                    {% if todo.complete %}
+
+                        <span class="badge badge-success ml-2">
+                            Completed
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="text-right">
+
+    {% if todo.complete %}
+
+        <span class="badge badge-success mb-3">
+            <i class="bi bi-check-circle-fill"></i>
+            Completed
+        </span>
+
+    {% else %}
+
+        <span class="badge badge-warning mb-3">
+            <i class="bi bi-clock-history"></i>
+            Pending
+        </span>
+
+    {% endif %}
+
+    <div class="mt-3">
+
+        <a
+            href="/todos/edit-todo-page/{{ todo.id }}"
+            class="btn btn-outline-primary btn-sm mr-2">
+
+            <i class="bi bi-pencil-square"></i>
+
+            Edit
+
+        </a>
+
+    </div>
+
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

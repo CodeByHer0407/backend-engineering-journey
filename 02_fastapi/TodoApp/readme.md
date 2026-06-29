@@ -1,6 +1,6 @@
 # ✅ Todo Application
 
-A full-stack Todo Management application built with **FastAPI**, featuring JWT authentication, role-based authorization, database migrations, unit testing, and cloud deployment.
+A production-inspired Todo Management application built with FastAPI, SQLAlchemy, JWT authentication, and PostgreSQL. The project demonstrates backend engineering fundamentals including RESTful APIs, authentication, database migrations, testing, and deployment.
 
 This project was initially developed while learning FastAPI and has since been refactored using production-oriented backend engineering practices.
 

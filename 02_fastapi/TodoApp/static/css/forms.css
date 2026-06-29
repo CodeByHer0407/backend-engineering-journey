@@ -1,0 +1,142 @@
+/* ======================================================
+   Form Pages
+====================================================== */
+
+.add-todo-card{
+    background:#ffffff;
+    border-radius:24px;
+    padding:45px;
+    box-shadow:0 20px 45px rgba(15,23,42,.08);
+    border:1px solid #eef2f7;
+}
+
+.page-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:1.8rem;
+}
+
+.back-link{
+    color:#4f46e5;
+    font-weight:600;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.back-link:hover{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+.back-link i{
+    margin-right:8px;
+}
+
+.add-todo-card h2{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.add-todo-card p{
+    font-size:1rem;
+    color:#6b7280;
+}
+
+/* ===========================================
+   Labels
+=========================================== */
+
+label{
+    font-weight:600;
+    margin-bottom:8px;
+    color:#374151;
+}
+
+/* ===========================================
+   Inputs
+=========================================== */
+
+.modern-input{
+    border-radius:14px;
+    border:1px solid #dbe3ef;
+    min-height:55px;
+    padding:14px 18px;
+    transition:.25s;
+    box-shadow:none;
+    font-size:.95rem;
+}
+
+textarea.modern-input{
+    min-height:150px;
+    resize:vertical;
+}
+
+.modern-input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 0 4px rgba(79,70,229,.12);
+}
+
+/* ===========================================
+   Select
+=========================================== */
+
+select.modern-input{
+    cursor:pointer;
+}
+
+/* ===========================================
+   Buttons
+=========================================== */
+
+.btn-primary{
+    border:none;
+    border-radius:14px;
+    padding:12px 28px;
+    font-weight:600;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    transition:.25s;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(79,70,229,.25);
+}
+
+.btn-light{
+    border-radius:14px;
+    padding:12px 28px;
+    font-weight:600;
+    border:1px solid #e5e7eb;
+}
+
+.btn-light:hover{
+    background:#f8fafc;
+}
+
+/* ===========================================
+   Responsive
+=========================================== */
+
+@media(max-width:768px){
+
+.add-todo-card{
+    padding:30px;
+}
+
+.d-flex.justify-content-between{
+    flex-direction:column;
+    gap:15px;
+}
+
+.d-flex.justify-content-between .btn{
+    width:100%;
+}
+
+}
